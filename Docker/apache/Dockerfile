@@ -9,7 +9,9 @@ RUN apt update \
     && apt install php libapache2-mod-php php-mysql -y 
 
 RUN apt install git -y \
-    && mv /home/ubuntu/ASIR2-IAW-Proyecto/AppLAMP/src/* /var/www/html \
+    && cd /tmp \
+    && git clone https://github.com/RestiSanchez/ASIR2-IAW-Proyecto.git \
+    && mv /tmp/ASIR2-IAW-Proyecto/AppLAMP/src/* /var/www/html \
     && sed -i 's/localhost/mysql/' /var/www/html/config.php \
     && rm /var/www/html/index.html
 # Indica los puertos que va a escuchar el contendor
